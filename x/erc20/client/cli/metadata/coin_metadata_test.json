@@ -4,7 +4,7 @@
       "description": "The native staking and governance token of the Evmos chain",
       "denom_units": [
         {
-          "denom": "aevmos",
+          "denom": "apose",
           "exponent": 0
         },
         {
@@ -12,9 +12,9 @@
           "exponent": 18
         }
       ],
-      "base": "aevmos",
-      "display": "aevmos",
-      "name": "aevmos",
+      "base": "apose",
+      "display": "apose",
+      "name": "apose",
       "symbol": "EVMOS"
     }
   ]

@@ -51,7 +51,7 @@ Many proposals allow for long form text to be included, usually under the key `d
 {
   "title": "Airdrop Claim Mission",
   "description": "Vote to claim",
-  "deposit": "10000000000000000000aevmos"
+  "deposit": "10000000000000000000apose"
 }
 ```
 
@@ -62,16 +62,16 @@ For community pool spend proposals, there are five components:
 1. **Title** - the distinguishing name of the proposal, typically the way the that explorers list proposals
 2. **Description** - the body of the proposal that further describes what is being proposed and details surrounding the proposal
 3. **Recipient** - the Evmos (bech32-based) address that will receive funding from the Community Pool
-4. **Amount** - the amount of funding that the recipient will receive in atto-EVMOS (`aevmos`)
-5. **Deposit** - the amount that will be contributed to the deposit (in `aevmos`) from the account submitting the proposal
+4. **Amount** - the amount of funding that the recipient will receive in atto-EVMOS (`apose`)
+5. **Deposit** - the amount that will be contributed to the deposit (in `apose`) from the account submitting the proposal
 
 #### Made-Up Example
 
 In this simple example (below), a network explorer will list the governance proposal as a `CommunityPoolSpendProposal`. When an observer selects the proposal, they'll see the description. Not all explorers will show the recipient and amount, so ensure that you verify that the description aligns with the what the governance proposal is programmed to enact. If the description says that a certain address will receive a certain number of EVMOS, it should also be programmed to do that, but it's possible that that's not the case (accidentally or otherwise).
 
-The `amount` is `1000000000000000000aevmos`. This is equal to 1 EVMOS, so `recipient` address `evmos1mx9nqk5agvlsvt2yc8259nwztmxq7zjq50mxkp` will receive 1 EVMOS if this proposal is passed.
+The `amount` is `1000000000000000000apose`. This is equal to 1 EVMOS, so `recipient` address `evmos1mx9nqk5agvlsvt2yc8259nwztmxq7zjq50mxkp` will receive 1 EVMOS if this proposal is passed.
 
-The `deposit` of `192000000000000000000aevmos` results in 192 EVMOS being used from the proposal submitter's account. A minimum deposit is required for a proposal to enter the voting period, and anyone may contribute to this deposit within 3 days. If the minimum deposit isn't reached before this time, the deposit amounts will be burned. Deposit amounts will also be burned if the quorum isn't met in the vote or the proposal is vetoed.
+The `deposit` of `192000000000000000000apose` results in 192 EVMOS being used from the proposal submitter's account. A minimum deposit is required for a proposal to enter the voting period, and anyone may contribute to this deposit within 3 days. If the minimum deposit isn't reached before this time, the deposit amounts will be burned. Deposit amounts will also be burned if the quorum isn't met in the vote or the proposal is vetoed.
 
 ```json
 {
@@ -80,11 +80,11 @@ The `deposit` of `192000000000000000000aevmos` results in 192 EVMOS being used f
   "recipient": "evmos1mx9nqk5agvlsvt2yc8259nwztmxq7zjq50mxkp",
   "amount": [
     {
-      "denom": "aevmos",
+      "denom": "apose",
       "amount": "1000000000000000000"
     }
   ],
-  "deposit": "64000000000000000000aevmos"
+  "deposit": "64000000000000000000apose"
 }
 
 ```
@@ -107,10 +107,10 @@ Users can query the proposal details with the `evmosd` command-line interface us
   "amount": [
     {
       "amount": "12900000000000000000000",
-      "denom": "aevmos"
+      "denom": "apose"
     }
   ],
-  "deposit": "64000000000000000000aevmos"
+  "deposit": "64000000000000000000apose"
 }
 ```
 
@@ -127,8 +127,8 @@ For parameter-change proposals, there are seven components:
 3. **Subspace** - the Evmos module with the parameter that is being changed
 4. **Key** - the parameter that will be changed
 5. **Value** - the value of the parameter that will be changed by the governance mechanism
-6. **Denom** - `aevmos` (atto-EVMOS) will be the type of asset used as the deposit
-7. **Amount** - the amount that will be contributed to the deposit (in `aevmos`) from the account submitting the proposal
+6. **Denom** - `apose` (atto-EVMOS) will be the type of asset used as the deposit
+7. **Amount** - the amount that will be contributed to the deposit (in `apose`) from the account submitting the proposal
 
 #### Real Example
 
@@ -150,15 +150,15 @@ Users can query the proposal details with the evmosd command-line interface usin
     {
       "subspace": "gov",
       "key": "depositparams",
-      "value": {"mindeposit":[{"denom":"aevmos","amount":"64000000000000000000"}],
+      "value": {"mindeposit":[{"denom":"apose","amount":"64000000000000000000"}],
       "max_deposit_period":"1209600000000000"}
     }
   ],
-  "deposit": "20100000000000000000aevmos"
+  "deposit": "20100000000000000000apose"
 }
 ```
 
-The deposit `denom` is `aevmos` and `amount` is `20100000000000000000`. Therefore, a deposit of 20.1 EVMOS will be included with this proposal. At the time, the EVMOS mainnet had a 10 EVMOS minimum deposit, so this proposal was put directly into the voting period (and subsequently passed). The minimum deposit amount is currently 192 EVMOS. There is a minimum deposit required for a proposal to enter the voting period, and anyone may contribute to this deposit within a 3-day period. If the minimum deposit isn't reached before this time, the deposit amounts will be burned.
+The deposit `denom` is `apose` and `amount` is `20100000000000000000`. Therefore, a deposit of 20.1 EVMOS will be included with this proposal. At the time, the EVMOS mainnet had a 10 EVMOS minimum deposit, so this proposal was put directly into the voting period (and subsequently passed). The minimum deposit amount is currently 192 EVMOS. There is a minimum deposit required for a proposal to enter the voting period, and anyone may contribute to this deposit within a 3-day period. If the minimum deposit isn't reached before this time, the deposit amounts will be burned.
 
 ## Sending the transaction that submits your governance proposal
 
@@ -173,7 +173,7 @@ evmosd tx gov submit-legacy-proposal \
   --title=<title> \
   --description=<description> \
   --type="Text" \
-  --deposit="1000000aevmos" \
+  --deposit="1000000apose" \
   --from=<dev0> \
   --chain-id=<chain_id>
   --node <address>
@@ -220,7 +220,7 @@ evmosd tx gov deposit <proposal-id> <deposit> --from <name>
 ```
 
 In our case above, the `<proposal-id>` would be 59 as queried earlier.
-The `<deposit>` is written as `500000aevmos`, just like the example above.
+The `<deposit>` is written as `500000apose`, just like the example above.
 
 ### Submit your proposal to the testnet
 
@@ -235,4 +235,4 @@ Submitting your proposal to the testnet increases the likelihood that you will d
 
 - you'll need testnet tokens for your proposal (ask around for a [faucet](./../../developers/testnet/faucet.md))
 - the parameters for testnet proposals are different (eg. voting period timing, deposit amount, deposit denomination)
-- the deposit denomination is in `'atevmos'` instead of `'aevmos'`
+- the deposit denomination is in `'atevmos'` instead of `'apose'`

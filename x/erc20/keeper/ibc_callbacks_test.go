@@ -404,14 +404,14 @@ func (suite *KeeperTestSuite) TestConvertCoinToERC20FromPacket() {
 		{
 			name: "error - invalid sender",
 			malleate: func() transfertypes.FungibleTokenPacketData {
-				return transfertypes.NewFungibleTokenPacketData("aevmos", "10", "", "")
+				return transfertypes.NewFungibleTokenPacketData("apose", "10", "", "")
 			},
 			expPass: false,
 		},
 		{
 			name: "pass - is base denom",
 			malleate: func() transfertypes.FungibleTokenPacketData {
-				return transfertypes.NewFungibleTokenPacketData("aevmos", "10", senderAddr, "")
+				return transfertypes.NewFungibleTokenPacketData("apose", "10", senderAddr, "")
 			},
 			expPass: true,
 		},
